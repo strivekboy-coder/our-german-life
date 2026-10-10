@@ -11,6 +11,7 @@ main{width:min(100%,440px);text-align:center;position:relative} .heart{color:#c9
 form{text-align:left}label{display:block;font-size:20px;margin-bottom:10px}input{font-family:inherit;font-size:18px;width:100%;border:0;border-bottom:1px solid #cdb9a2;background:#fffaf2;border-radius:10px 10px 0 0;padding:16px 14px;color:#23394b;outline-offset:4px;margin-bottom:26px}input::placeholder{color:#a59486;opacity:1}input:focus{outline:2px solid #d38b78}button{font-family:inherit;cursor:pointer}
 .open{width:100%;padding:15px;border:0;border-radius:999px;background:#be5556;color:#fff9ed;font-size:21px;box-shadow:0 5px 0 #ead6c8;margin-top:7px}.open:hover{background:#a94449}.footer{margin-top:32px;color:#a78365;font-size:14px;letter-spacing:1px}
 dialog{padding:25px;border:0;border-radius:20px;background:#fff9ef;width:min(430px,calc(100vw - 36px));max-height:90svh;overflow:auto;text-align:center;color:#b5343e;box-shadow:0 24px 90px #3c29294d}dialog::backdrop{background:#2b25346b;backdrop-filter:blur(3px)}dialog h2{font-size:36px;margin:0 0 18px;font-family:WenKai,serif}dialog img{width:100%;max-height:49svh;object-fit:contain;display:block;border-radius:12px}dialog button{margin-top:18px;border:0;border-radius:999px;background:#be5556;color:white;font-size:18px;padding:11px 30px}button:focus-visible{outline:3px solid #23394b;outline-offset:4px}
+.answer-privacy{display:flex;align-items:center;gap:8px;font-size:15px;color:#856d59;margin:-8px 0 20px}.answer-privacy input{width:18px;height:18px;margin:0;padding:0;accent-color:#be5556}
 </style>
 </head>
 <body>
@@ -19,11 +20,13 @@ dialog{padding:25px;border:0;border-radius:20px;background:#fff9ef;width:min(430
 <h1>请输入开启生日礼物的<br>账号和两个密码</h1><p class="intro">嘿嘿，这份礼物在等你。</p>
 <form id="giftForm" novalidate>
 <label for="account">账号</label><input id="account" name="account" type="text" placeholder="最爱你的人的名字" autocomplete="off" spellcheck="false">
-<label for="password">密码1</label><input id="password" name="password" type="password" placeholder="你最爱的人的名字" autocomplete="off">
-<label for="password2">密码2</label><input id="password2" name="password2" type="password" placeholder="哥哥最爱谁" autocomplete="off">
+<label for="password">密码1</label><input id="password" name="password" type="text" inputmode="text" lang="zh-CN" autocapitalize="off" spellcheck="false" placeholder="你最爱的人的名字" autocomplete="off">
+<label for="password2">密码2</label><input id="password2" name="password2" type="text" inputmode="text" lang="zh-CN" autocapitalize="off" spellcheck="false" placeholder="哥哥最爱谁" autocomplete="off">
+<label class="answer-privacy"><input id="hideAnswers" type="checkbox">隐藏答案（输入中文时请取消勾选）</label>
 <button class="open" type="submit">开启生日礼物 →</button>
 </form><p class="footer">三个答案，打开我们的一年。</p>
 </main>
 <dialog id="errorDialog" aria-labelledby="errorTitle"><h2 id="errorTitle">错误❌</h2><img id="errorImage" hidden alt="气鼓鼓的小表情"><button id="retry" type="button">再猜一次</button></dialog>
 <script src="gift-app.js"></script>
+<script>document.getElementById('hideAnswers').addEventListener('change',function(){for(const id of ['password','password2'])document.getElementById(id).type=this.checked?'password':'text';});</script>
 </body></html>
