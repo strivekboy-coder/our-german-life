@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开启你的生日礼物 ♡</title>
+<style>
+@font-face{font-family:WenKai;src:local("KaiTi"),local("STKaiti");font-display:swap}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:#f6f1e7;color:#23394b;font-family:WenKai,'KaiTi',serif;display:grid;place-items:center;padding:30px 20px}
+main{width:min(100%,440px);text-align:center;position:relative} .heart{color:#c95153;font-size:66px;line-height:1;margin-bottom:22px;transform:rotate(-8deg)}
+.small{font-family:Georgia,serif;font-size:12px;letter-spacing:3px;color:#a78365;margin:0 0 16px}h1{font-size:clamp(25px,5vw,33px);font-weight:normal;line-height:1.55;margin:0 0 12px}.intro{color:#8e7465;margin:0 0 38px;font-size:17px}
+form{text-align:left}label{display:block;font-size:20px;margin-bottom:10px}input{font-family:inherit;font-size:18px;width:100%;border:0;border-bottom:1px solid #cdb9a2;background:#fffaf2;border-radius:10px 10px 0 0;padding:16px 14px;color:#23394b;outline-offset:4px;margin-bottom:26px}input::placeholder{color:#a59486;opacity:1}input:focus{outline:2px solid #d38b78}button{font-family:inherit;cursor:pointer}
+.open{width:100%;padding:15px;border:0;border-radius:999px;background:#be5556;color:#fff9ed;font-size:21px;box-shadow:0 5px 0 #ead6c8;margin-top:7px}.open:hover{background:#a94449}.footer{margin-top:32px;color:#a78365;font-size:14px;letter-spacing:1px}
+dialog{padding:25px;border:0;border-radius:20px;background:#fff9ef;width:min(430px,calc(100vw - 36px));max-height:90svh;overflow:auto;text-align:center;color:#b5343e;box-shadow:0 24px 90px #3c29294d}dialog::backdrop{background:#2b25346b;backdrop-filter:blur(3px)}dialog h2{font-size:36px;margin:0 0 18px;font-family:WenKai,serif}dialog img{width:100%;max-height:49svh;object-fit:contain;display:block;border-radius:12px}dialog button{margin-top:18px;border:0;border-radius:999px;background:#be5556;color:white;font-size:18px;padding:11px 30px}button:focus-visible{outline:3px solid #23394b;outline-offset:4px}
+</style>
+</head>
+<body>
+<main>
+<div class="heart" aria-hidden="true">♡</div><p class="small">A LITTLE SECRET, JUST FOR YOU</p>
+<h1>请输入开启生日礼物的<br>账号和两个密码</h1><p class="intro">嘿嘿，这份礼物在等你。</p>
+<form id="giftForm" novalidate>
+<label for="account">账号</label><input id="account" name="account" type="text" placeholder="最爱你的人的名字" autocomplete="off" spellcheck="false">
+<label for="password">密码1</label><input id="password" name="password" type="password" placeholder="你最爱的人的名字" autocomplete="off">
+<label for="password2">密码2</label><input id="password2" name="password2" type="password" placeholder="哥哥最爱谁" autocomplete="off">
+<button class="open" type="submit">开启生日礼物 →</button>
+</form><p class="footer">三个答案，打开我们的一年。</p>
+</main>
+<dialog id="errorDialog" aria-labelledby="errorTitle"><h2 id="errorTitle">错误❌</h2><img id="errorImage" hidden alt="气鼓鼓的小表情"><button id="retry" type="button">再猜一次</button></dialog>
+<script src="gift-app.js"></script>
+</body></html>
