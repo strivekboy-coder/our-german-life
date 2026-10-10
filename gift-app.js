@@ -34,8 +34,7 @@ if(form){
    const pass=await passwordKey(values,metadata.salt,metadata.rounds);const master=new Uint8Array(await decryptPacket(pass,decode64(metadata.wrappedKey)));
    await configureWorker(encode64(master));sessionStorage.setItem('birthdayGiftOpened','yes');location.href='album.html?page=1';return;
   }catch(error){
-   image.hidden=true;image.removeAttribute('src');
-   if(metadata)try{const key=await passwordKey(values.slice(0,2),metadata.errorSalt,metadata.rounds);const decrypted=await decryptPacket(key,await (await fetch(metadata.errorFile)).arrayBuffer());image.src=URL.createObjectURL(new Blob([decrypted],{type:metadata.errorMime}));image.hidden=false;}catch{}
+   image.src='error.webp';image.hidden=false;
    popup.showModal();
   }finally{button.disabled=false;button.textContent='开启生日礼物 →';}
  });
