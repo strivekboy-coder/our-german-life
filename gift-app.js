@@ -5,7 +5,7 @@ async function decryptPacket(key,buffer){const a=new Uint8Array(buffer);return c
 async function passwordKey(values,salt,rounds){const bytes=new TextEncoder().encode(JSON.stringify(values));const key=await crypto.subtle.importKey('raw',bytes,'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:decode64(salt),iterations:rounds,hash:'SHA-256'},key,{name:'AES-GCM',length:256},false,['decrypt']);}
 async function configureWorker(master){
  const key=await crypto.subtle.importKey('raw',decode64(master),'AES-GCM',false,['decrypt']);
- const buffer=await (await fetch('vault/manifest.bin')).arrayBuffer();
+ const buffer=await (await fetch('vault/manifest.bin',{cache:'no-store'})).arrayBuffer();
  const manifest=JSON.parse(new TextDecoder().decode(await decryptPacket(key,buffer)));
  sessionStorage.setItem('giftSession',JSON.stringify({key:master,manifest}));
  await navigator.serviceWorker.register('sw.js',{scope:'./'});const registration=await navigator.serviceWorker.ready;
